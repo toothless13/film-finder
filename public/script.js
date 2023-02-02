@@ -22,26 +22,38 @@ const getGenres = async () => {
 const getMovies = async () => {
   const selectedGenre = getSelectedGenre();
   const discoverMovieEndpoint = '/discover/movie';
-  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}`;
+// Get a random page number
+  const requestParams =`?api_key=${tmdbKey}&with_genres=${selectedGenre}`;
+//   const requestParams2 = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&page=${randPage}`;
   const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
 
+
+//   Get results using random page number
+  const response = await fetch(urlToFetch);
   try {
-    const response = await fetch(urlToFetch);
     if(response.ok) {
-      const jsonResponse = await response.json();
-      const totalPages = jsonResponse.total_pages;
-      const randPage = Math.floor(Math.random() * totalPages);
-      console.log(randPage);
-      const results = jsonResponse.results;
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+    const pages = jsonResponse.total_pages;
+    console.log(pages);
+    const randPage = Math.floor(Math.random() * pages);
+    // return randPage;
+    
+    console.log(randPage);
+    const response2 = await fetch(`${urlToFetch}&page=${randPage}`);
+    if(response2.ok) {
+      const jsonResponse2 = await response2.json();
+      console.log(jsonResponse2);
+      const results = jsonResponse2.results;
       return results;   
     }
-  } catch(error) {
+  }} catch(error) {
     console.log(error);
   }
 
 };
 
-getMovies();
+// getMovies();
 
 const getMovieInfo = async (movie) => {
   const movieId = movie.id;
