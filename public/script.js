@@ -33,12 +33,15 @@ const getMovies = async () => {
   try {
     if(response.ok) {
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
+    // console.log(jsonResponse);
+    let randPage = 1;
     const pages = jsonResponse.total_pages;
-    console.log(pages);
-    const randPage = Math.floor(Math.random() * pages);
-    // return randPage;
-    
+    if(pages <= 500) {
+        randPage = Math.floor(Math.random() * pages);
+    } else {
+        randPage = Math.floor(Math.random() * 500);
+    }
+    console.log(typeof randPage);
     console.log(randPage);
     const response2 = await fetch(`${urlToFetch}&page=${randPage}`);
     if(response2.ok) {
