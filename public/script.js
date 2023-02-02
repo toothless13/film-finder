@@ -29,6 +29,9 @@ const getMovies = async () => {
     const response = await fetch(urlToFetch);
     if(response.ok) {
       const jsonResponse = await response.json();
+      const totalPages = jsonResponse.total_pages;
+      const randPage = Math.floor(Math.random() * totalPages);
+      console.log(randPage);
       const results = jsonResponse.results;
       return results;   
     }
@@ -38,6 +41,7 @@ const getMovies = async () => {
 
 };
 
+getMovies();
 
 const getMovieInfo = async (movie) => {
   const movieId = movie.id;
