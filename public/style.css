@@ -47,7 +47,7 @@ img#moviePoster {
     line-height: 1.25;
 }
 
-#movieTitle, #movieOverview, #movieDate {
+#movieTitle, #movieOverview, #movieDate, #movieCast {
     padding:  32px;
 }
 

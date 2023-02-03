@@ -71,6 +71,7 @@ const createMovieOverview = (overview) => {
     return overviewParagraph;
 };
 
+// Create HTML for movie date
 const createMovieDate = (date) => {
     const movieDate = document.createElement('p');
     movieDate.setAttribute('id', 'movieDate');
@@ -79,6 +80,19 @@ const createMovieDate = (date) => {
     movieDate.innerHTML = `<p><strong>Release Date:</strong>&emsp;${dateFormatted.toLocaleDateString('en-gb', dateOptions)}</p>`;
 
     return movieDate;
+}
+
+// Create HTML for movie cast
+const createMovieCast = (cast) => {
+    if(cast.length > 0){
+    const movieCast = document.createElement('p');
+    movieCast.setAttribute('id', 'movieCast');
+    let castList = cast.slice(0, 2);
+    castList = castList.join(', ');
+    castList = `${castList} and ${cast[2]}`;
+    movieCast.innerHTML = `<p><strong>Top Cast:</strong>&emsp;${castList}</p>`;
+    return movieCast;
+    }
 }
 
 // Returns a random movie from the first page of movies
@@ -92,7 +106,6 @@ const getRandomMovie = (movies) => {
 const displayMovie = (movieInfo, castInfo) => {
     const moviePosterDiv = document.getElementById('moviePoster');
     const movieTextDiv = document.getElementById('movieText');
-    const movieDateDiv = document.getElementById('movieReleaseDate');
     const likeBtn = document.getElementById('likeBtn');
     const dislikeBtn = document.getElementById('dislikeBtn');
   
@@ -101,12 +114,14 @@ const displayMovie = (movieInfo, castInfo) => {
     const titleHeader = createMovieTitle(movieInfo.title);
     const overviewText = createMovieOverview(movieInfo.overview);
     const releaseDate = createMovieDate(movieInfo.release_date);
+    const topCast = createMovieCast(castInfo);
   
     // Append title, poster, and overview to page
     moviePosterDiv.appendChild(moviePoster);
     movieTextDiv.appendChild(titleHeader);
     movieTextDiv.appendChild(overviewText);
     movieTextDiv.appendChild(releaseDate);
+    movieTextDiv.appendChild(topCast);
 
   
     showBtns();
