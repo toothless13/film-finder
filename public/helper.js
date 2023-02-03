@@ -31,7 +31,7 @@ const clearCurrentMovie = () => {
 }
 
 // Adds current movie to the movieLikeDiv
-const addCurrentMovieToLike = (likeOrDislike) => {
+const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
     const moviePoster = document.getElementById('moviePoster');
     // const likeOrDislike = 'likeOrDislike';
     const movieLikeDislikeDiv = document.getElementById(`${likeOrDislike}`);
@@ -47,7 +47,7 @@ const addCurrentMovieToLike = (likeOrDislike) => {
 
 // After liking a movie, adds movie to liked movie section, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
-    addCurrentMovieToLike('like');
+    addCurrentMovieToLikeOrDislike('like');
     clearCurrentMovie();
     showRandomMovie();
 };
@@ -55,7 +55,7 @@ const likeMovie = () => {
 // After disliking a movie, clears the current movie from the screen and gets another random movie
 const dislikeMovie = () => {
     // Need to add code that pushes disliked movie to disliked 
-    addCurrentMovieToLike('dislike');
+    addCurrentMovieToLikeOrDislike('dislike');
     clearCurrentMovie();
     showRandomMovie();
 };
