@@ -71,6 +71,14 @@ const createMovieOverview = (overview) => {
     return overviewParagraph;
 };
 
+const createMovieDate = (date) => {
+    const movieDate = document.createElement('p');
+    movieDate.setAttribute('id', 'movieDate');
+    movieDate.innerHTML = `<p>Release Date: ${date}</p>`;
+
+    return movieDate;
+}
+
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
     const randomIndex = Math.floor(Math.random() * movies.length);
@@ -82,6 +90,7 @@ const getRandomMovie = (movies) => {
 const displayMovie = (movieInfo) => {
     const moviePosterDiv = document.getElementById('moviePoster');
     const movieTextDiv = document.getElementById('movieText');
+    const movieDateDiv = document.getElementById('movieReleaseDate');
     const likeBtn = document.getElementById('likeBtn');
     const dislikeBtn = document.getElementById('dislikeBtn');
   
@@ -89,11 +98,14 @@ const displayMovie = (movieInfo) => {
     const moviePoster = createMoviePoster(movieInfo.poster_path);
     const titleHeader = createMovieTitle(movieInfo.title);
     const overviewText = createMovieOverview(movieInfo.overview);
+    const releaseDate = createMovieDate(movieInfo.release_date);
   
     // Append title, poster, and overview to page
     moviePosterDiv.appendChild(moviePoster);
     movieTextDiv.appendChild(titleHeader);
     movieTextDiv.appendChild(overviewText);
+    movieTextDiv.appendChild(releaseDate);
+
   
     showBtns();
     likeBtn.onclick = likeMovie;
