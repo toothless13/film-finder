@@ -30,14 +30,25 @@ const clearCurrentMovie = () => {
     movieTextDiv.innerHTML = '';
 }
 
-// After liking a movie, clears the current movie from the screen and gets another random movie
+// Adds current movie to the movieLikeDiv
+const addCurrentMovieToLike = () => {
+    const moviePoster = document.getElementById('moviePoster');
+    const movieLikeDiv = document.getElementById('like');
+
+    const moviePosterClone = moviePoster.firstChild.cloneNode(true);
+    movieLikeDiv.append(moviePosterClone);
+}
+
+// After liking a movie, adds movie to liked movie section, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
+    addCurrentMovieToLike();
     clearCurrentMovie();
     showRandomMovie();
 };
 
 // After disliking a movie, clears the current movie from the screen and gets another random movie
 const dislikeMovie = () => {
+    // Need to add code that pushes disliked movie to disliked array
     clearCurrentMovie();
     showRandomMovie();
 };
@@ -49,6 +60,7 @@ const createMoviePoster = (posterPath) => {
     const posterImg = document.createElement('img');
     posterImg.setAttribute('src', moviePosterUrl);
     posterImg.setAttribute('id', 'moviePoster');
+    posterImg.setAttribute('class', 'moviePoster');
   
     return posterImg;
 };
@@ -94,6 +106,8 @@ const createMovieCast = (cast) => {
     return movieCast;
     }
 }
+
+
 
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
