@@ -36,6 +36,9 @@ const addCurrentMovieToLike = () => {
     const movieLikeDiv = document.getElementById('like');
 
     const moviePosterClone = moviePoster.firstChild.cloneNode(true);
+    // moviePosterClone.setAttribute('id', 'moviePosterClone');
+    moviePosterClone.style.setProperty('width', 'inherit');
+    moviePosterClone.style.setProperty('margin', 'inherit');
     movieLikeDiv.append(moviePosterClone);
 }
 
