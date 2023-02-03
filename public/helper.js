@@ -89,7 +89,7 @@ const getRandomMovie = (movies) => {
 };
 
 // Uses the DOM to create HTML to display the movie
-const displayMovie = (movieInfo) => {
+const displayMovie = (movieInfo, castInfo) => {
     const moviePosterDiv = document.getElementById('moviePoster');
     const movieTextDiv = document.getElementById('movieText');
     const movieDateDiv = document.getElementById('movieReleaseDate');
