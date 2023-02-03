@@ -69,6 +69,7 @@ const getMovieInfo = async (movie) => {
     if(response.ok) {
       const jsonResponse = await response.json();
       const movieInfo = jsonResponse;
+      console.log(movieInfo);
       return movieInfo;
     }
   } catch(error) {

@@ -74,7 +74,9 @@ const createMovieOverview = (overview) => {
 const createMovieDate = (date) => {
     const movieDate = document.createElement('p');
     movieDate.setAttribute('id', 'movieDate');
-    movieDate.innerHTML = `<p>Release Date: ${date}</p>`;
+    const dateFormatted = new Date(Date.parse(date));
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric'};
+    movieDate.innerHTML = `<p><strong>Release Date:</strong>&emsp;${dateFormatted.toLocaleDateString('en-gb', dateOptions)}</p>`;
 
     return movieDate;
 }
