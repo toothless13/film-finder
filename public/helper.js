@@ -31,27 +31,31 @@ const clearCurrentMovie = () => {
 }
 
 // Adds current movie to the movieLikeDiv
-const addCurrentMovieToLike = () => {
+const addCurrentMovieToLike = (likeOrDislike) => {
     const moviePoster = document.getElementById('moviePoster');
-    const movieLikeDiv = document.getElementById('like');
+    // const likeOrDislike = 'likeOrDislike';
+    const movieLikeDislikeDiv = document.getElementById(`${likeOrDislike}`);
 
     const moviePosterClone = moviePoster.firstChild.cloneNode(true);
     // moviePosterClone.setAttribute('id', 'moviePosterClone');
     moviePosterClone.style.setProperty('width', 'inherit');
     moviePosterClone.style.setProperty('margin', 'inherit');
-    movieLikeDiv.append(moviePosterClone);
+    movieLikeDislikeDiv.append(moviePosterClone);
 }
+
+
 
 // After liking a movie, adds movie to liked movie section, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
-    addCurrentMovieToLike();
+    addCurrentMovieToLike('like');
     clearCurrentMovie();
     showRandomMovie();
 };
 
 // After disliking a movie, clears the current movie from the screen and gets another random movie
 const dislikeMovie = () => {
-    // Need to add code that pushes disliked movie to disliked array
+    // Need to add code that pushes disliked movie to disliked 
+    addCurrentMovieToLike('dislike');
     clearCurrentMovie();
     showRandomMovie();
 };

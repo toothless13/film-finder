@@ -68,12 +68,14 @@ label {
     margin-bottom: 5px;
 }
 
-.like {
+.like,
+.dislike {
     width: 30%;
     display: flex;
 }
 
-.like img#moviePosterClone {
+.like img#moviePosterClone,
+.dislike img#moviePosterClone {
     max-width: 100%;
     max-height: 100%;
     flex-shrink: 1;
