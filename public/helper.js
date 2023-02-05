@@ -30,6 +30,14 @@ const clearCurrentMovie = () => {
     movieTextDiv.innerHTML = '';
 }
 
+// Clear the stored likes and dislikes
+const clearLikesDislikes = () => {
+    const movieLikeDiv = document.getElementById('like');
+    const movieDislikeDiv = document.getElementById('dislike');
+    movieLikeDiv.innerHTML = '';
+    movieDislikeDiv.innerHTML = '';
+}
+
 // Adds current movie to the movieLikeDiv
 const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
     const moviePoster = document.getElementById('moviePoster');
