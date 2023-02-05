@@ -32,8 +32,8 @@ const clearCurrentMovie = () => {
 
 // Clear the stored likes and dislikes
 const clearLikesDislikes = () => {
-    const movieLikeDiv = document.getElementById('like');
-    const movieDislikeDiv = document.getElementById('dislike');
+    const movieLikeDiv = document.getElementById('likedPosters');
+    const movieDislikeDiv = document.getElementById('dislikedPosters');
     movieLikeDiv.innerHTML = '';
     movieDislikeDiv.innerHTML = '';
 }
@@ -46,8 +46,8 @@ const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
 
     const moviePosterClone = moviePoster.firstChild.cloneNode(true);
     // moviePosterClone.setAttribute('id', 'moviePosterClone');
-    moviePosterClone.style.setProperty('width', 'inherit');
-    moviePosterClone.style.setProperty('margin', 'inherit');
+    moviePosterClone.style.setProperty('width', '20%');
+    moviePosterClone.style.setProperty('margin', '0');
     movieLikeDislikeDiv.append(moviePosterClone);
 }
 
@@ -55,7 +55,7 @@ const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
 
 // After liking a movie, adds movie to liked movie section, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
-    addCurrentMovieToLikeOrDislike('like');
+    addCurrentMovieToLikeOrDislike('likedPosters');
     clearCurrentMovie();
     showRandomMovie();
 };
@@ -63,7 +63,7 @@ const likeMovie = () => {
 // After disliking a movie, clears the current movie from the screen and gets another random movie
 const dislikeMovie = () => {
     // Need to add code that pushes disliked movie to disliked 
-    addCurrentMovieToLikeOrDislike('dislike');
+    addCurrentMovieToLikeOrDislike('dislikedPosters');
     clearCurrentMovie();
     showRandomMovie();
 };
