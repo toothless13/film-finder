@@ -41,12 +41,12 @@ const getMovies = async () => {
     } else {
         randPage = Math.floor(Math.random() * 500);
     }
-    console.log(typeof randPage);
-    console.log(randPage);
+    // console.log(typeof randPage);
+    // console.log(randPage);
     const response2 = await fetch(`${urlToFetch}&page=${randPage}`);
     if(response2.ok) {
       const jsonResponse2 = await response2.json();
-      console.log(jsonResponse2);
+      // console.log(jsonResponse2);
       const results = jsonResponse2.results;
       return results;   
     }
@@ -69,7 +69,7 @@ const getMovieInfo = async (movie) => {
     if(response.ok) {
       const jsonResponse = await response.json();
       const movieInfo = jsonResponse;
-      console.log(movieInfo);
+      // console.log(movieInfo);
       return movieInfo;
     }
   } catch(error) {
@@ -92,7 +92,7 @@ const getCastInfo = async (movie) => {
       for(let i = 0; i < 3; i++) {
         movieCast.push(jsonResponse.cast[i].name);
       }
-      console.log(movieCast);
+      // console.log(movieCast);
       return movieCast;
       } else {
         return movieCast;
@@ -119,3 +119,8 @@ const showRandomMovie = async () => {
 getGenres().then(populateGenreDropdown);
 playBtn.onclick = showRandomMovie;
 playBtn.addEventListener('click', clearLikesDislikes);
+const likeButton = document.getElementById('likeBtn');
+const dislikeButton = document.getElementById('dislikeBtn');
+likeButton.addEventListener('click', makeLikedDislikedVisible);
+dislikeButton.addEventListener('click', makeLikedDislikedVisible);
+playBtn.addEventListener('click', makeLikedDislikedHidden);

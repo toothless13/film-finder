@@ -72,6 +72,7 @@ label {
     display: flex;
     width: 100%;
     margin: 0 auto;
+    visibility: hidden;
 }
 
 .like,

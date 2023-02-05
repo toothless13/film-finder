@@ -38,6 +38,32 @@ const clearLikesDislikes = () => {
     movieDislikeDiv.innerHTML = '';
 }
 
+// Make stored likes and dislikes visible
+const makeLikedDislikedVisible = () => {
+    const likedOrDisliked = document.getElementById('likeOrDislikeStore');
+    likedOrDisliked.style.visibility = 'visible';
+    const likeButton = document.getElementById('likeBtn');
+    likeButton.removeEventListener('click', this.makeLikedDislikedVisible);
+    const dislikeButton = document.getElementById('dislikeBtn');
+    dislikeButton.removeEventListener('click', this.makeLikedDislikedVisible);
+}
+
+// Makes stored likes and dislikes hidden
+const makeLikedDislikedHidden = () => {
+    const likedOrDisliked = document.getElementById('likeOrDislikeStore');
+    likedOrDisliked.style.visibility = 'hidden';
+    const likeButton = document.getElementById('likeBtn');
+    likeButton.addEventListener('click', this.makeLikedDislikedVisible);
+    const dislikeButton = document.getElementById('dislikeBtn');
+    dislikeButton.addEventListener('click', this.makeLikedDislikedVisible);
+}
+
+const likeDislikeVisibility = () => {
+    const likedOrDisliked = document.getElementById('likeOrDislikeStore');
+    const visibility = likedOrDisliked.style.visibility;
+    console.log(visibility);
+}
+
 // Adds current movie to the movieLikeDiv
 const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
     const moviePoster = document.getElementById('moviePoster');
@@ -50,8 +76,6 @@ const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
     moviePosterClone.style.setProperty('margin', '0');
     movieLikeDislikeDiv.append(moviePosterClone);
 }
-
-
 
 // After liking a movie, adds movie to liked movie section, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
