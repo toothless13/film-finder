@@ -58,12 +58,6 @@ const makeLikedDislikedHidden = () => {
     dislikeButton.addEventListener('click', this.makeLikedDislikedVisible);
 }
 
-const likeDislikeVisibility = () => {
-    const likedOrDisliked = document.getElementById('likeOrDislikeStore');
-    const visibility = likedOrDisliked.style.visibility;
-    console.log(visibility);
-}
-
 // Adds current movie to the movieLikeDiv
 const addCurrentMovieToLikeOrDislike = (likeOrDislike) => {
     const moviePoster = document.getElementById('moviePoster');
